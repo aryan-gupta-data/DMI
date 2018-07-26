@@ -29,7 +29,7 @@ FileSensor_data <- list()
 #################### Getting the possible names for text to search in the PDF files ###################
 
 setwd("") #Enter the path where the Excel Files for the query text is
-PossibleNames <- read.csv("Possible Names of Sensors.csv",header = F,fileEncoding = "UTF-8-BOM")
+PossibleNames <- read.csv(file.choose(),header = F,fileEncoding = "UTF-8-BOM") # choose "Possible Names of Sensors.csv" ---included in the repository
 setwd("") #Enter the path where there are all the PDF Files are
 
 Col1 <- as.character(PossibleNames$V1)[as.character(PossibleNames$V1) != ""]  
@@ -115,8 +115,8 @@ while (Num_OF_Years < length(files_list) + 1) {
   File <- as.data.frame(File) 
   #File[,45:ncol(File)] <- NULL # Did this coz i just want the data of first 44 sensors.....others are just synonymns or the first 44
   
-  write.csv(colSums(File), file = paste("Analysis_DMI_",temp_year,"_Total.csv"))
-  write.csv(File, file = paste("Analysis_DMI_",temp_year,".csv"))
+  write.csv(colSums(File), file = paste("ReAnalysis_Test_DMI_",temp_year,"_Total.csv"))
+  write.csv(File, file = paste("ReAnalysis_Test_DMI_",temp_year,".csv"))
   
   FileSensor_data <- NULL
   FileSensor_data_dataframe <- NULL
